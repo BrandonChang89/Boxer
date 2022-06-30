@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, BXRenderingStyle) {
 
 /// Return the current frame being rendered - i.e. the last frame that was passed
 /// to the view via updateWithFrame:. This property must be KVO-compliant.
-@property (readonly, nonatomic) BXVideoFrame *currentFrame;
+@property (nonatomic) BXVideoFrame *currentFrame;
 
 @property (readonly, nonatomic) NSArray<OEShaderParamGroup *> *parameterGroups;
 

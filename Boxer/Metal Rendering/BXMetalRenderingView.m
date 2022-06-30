@@ -137,7 +137,7 @@
 
 - (void)updateWithFrame:(BXVideoFrame *)frame {
     if (frame == nil) {
-        _currentFrame = nil;
+        self.currentFrame = nil;
         _texture      = nil;
         return;
     }
@@ -152,7 +152,7 @@
         }
         
         // new buffer
-        _currentFrame = frame;
+        self.currentFrame = frame;
         MTLTextureDescriptor *td =
         [MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatBGRA8Unorm
                                                            width:frame.size.width
