@@ -139,6 +139,11 @@ enum {
     
     //Update the keyboard panel instructions.
     [self syncKeyboardInstructions];
+    
+    NSString *autoexecCommands = [[NSUserDefaults standardUserDefaults] stringForKey:@"autoexecCommands"];
+    if (autoexecCommands) {
+        self.autoexecForDOSPrompt.string = autoexecCommands;
+    }
 }
 
 - (void) dealloc
@@ -478,6 +483,11 @@ enum {
 	[self.gamesFolderSelector selectItemAtIndex: 0];
 }
 
+- (void) textDidChange:(NSNotification *)notification
+{
+    [[NSUserDefaults standardUserDefaults] setObject:self.autoexecForDOSPrompt.string
+                                              forKey:@"autoexecCommands"];
+}
 
 #pragma mark - Managing hotkey instructions
 

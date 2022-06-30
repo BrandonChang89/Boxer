@@ -1376,6 +1376,17 @@ NSString * const BXGameImportedNotificationType     = @"BXGameImported";
             didPresentSelector: NULL
                    contextInfo: NULL];
         }
+	} else {
+		NSString *autoexecCommands = [[NSUserDefaults standardUserDefaults] stringForKey:@"autoexecCommands"];
+		if (autoexecCommands) {
+			NSArray<NSString *> *commands = [autoexecCommands componentsSeparatedByString:@"\n"];
+			for (NSString *command in commands) {
+				if (![command isEqualToString:@""]) {
+					NSLog(@"executing: %@", command);
+					[self.emulator executeCommand:command encoding:NSUTF8StringEncoding];
+				}
+			}
+		}
 	}
     
     //Clear the program-skipping flag for next launch.

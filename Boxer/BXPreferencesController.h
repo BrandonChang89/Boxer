@@ -13,7 +13,7 @@
 
 /// BXPreferencesController manages Boxer's application-wide preferences panel.
 /// It is a singleton, and once opened for the first time it stays alive throughout the lifetime of the application.
-@interface BXPreferencesController : ADBTabbedWindowController <NSOpenSavePanelDelegate>
+@interface BXPreferencesController : ADBTabbedWindowController <NSOpenSavePanelDelegate, NSTextViewDelegate>
 
 /// The filter gallery view from which the user can choose the active rendering style.
 @property (strong, nonatomic) IBOutlet BXFilterGallery *filterGallery;
@@ -52,6 +52,8 @@
 /// The button to open the Accessibility Preferences, shown in the Keyboard panel when Boxer
 /// is not allowed to activate its hotkey capture event tap.
 @property (strong, nonatomic) IBOutlet NSButton *hotkeyCapturePermissionsButton;
+
+@property (strong, nonatomic) IBOutlet NSTextView *autoexecForDOSPrompt;
 
 
 /// Provides a singleton instance of the window controller which stays retained for the lifetime
